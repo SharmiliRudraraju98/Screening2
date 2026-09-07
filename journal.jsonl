@@ -1,0 +1,4 @@
+{"ts": "2026-09-07T14:32:09.086684+00:00", "event": "bind_key", "asset_id": "as-0006", "idempotency_key": "as-key-as-0006"}
+{"ts": "2026-09-07T14:32:09.332060+00:00", "event": "deploy_attempt", "asset_id": "as-0006", "idempotency_key": "as-key-as-0006", "checksum": "g8nzss"}
+{"ts": "2026-09-07T14:32:09.469789+00:00", "event": "outcome", "asset_id": "as-0006", "status": "deployed", "reason": "201 created", "http": 201, "dep_rows": [{"id": "dep-6", "asset_id": "as-0006", "checksum": "g8nzss", "at": 1788791529429}]}
+{"ts": "2026-09-07T14:32:09.541857+00:00", "event": "outcome", "asset_id": "as-0006", "status": "already_present", "reason": "pre-check found existing row", "dep_rows": [{"id": "dep-6", "asset_id": "as-0006", "checksum": "g8nzss", "at": 1788791529429}]}
