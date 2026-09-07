@@ -1,0 +1,905 @@
+{
+  "report": {
+    "as-0001": {
+      "status": "deployed"
+    },
+    "as-0002": {
+      "status": "deployed"
+    },
+    "as-0003": {
+      "status": "deployed"
+    },
+    "as-0004": {
+      "status": "deployed"
+    },
+    "as-0005": {
+      "status": "blocked",
+      "reason": "duplicated during discovery phase, no delete endpoint available"
+    },
+    "as-0006": {
+      "status": "deployed"
+    },
+    "as-0007": {
+      "status": "deployed"
+    },
+    "as-0008": {
+      "status": "deployed"
+    },
+    "as-0009": {
+      "status": "deployed"
+    },
+    "as-0010": {
+      "status": "deployed"
+    },
+    "as-0011": {
+      "status": "deployed"
+    },
+    "as-0012": {
+      "status": "deployed"
+    },
+    "as-0013": {
+      "status": "deployed"
+    },
+    "as-0014": {
+      "status": "deployed"
+    },
+    "as-0015": {
+      "status": "deployed"
+    },
+    "as-0016": {
+      "status": "deployed"
+    },
+    "as-0017": {
+      "status": "deployed"
+    },
+    "as-0018": {
+      "status": "deployed"
+    },
+    "as-0019": {
+      "status": "deployed"
+    },
+    "as-0020": {
+      "status": "deployed"
+    },
+    "as-0021": {
+      "status": "deployed"
+    },
+    "as-0022": {
+      "status": "deployed"
+    },
+    "as-0023": {
+      "status": "deployed"
+    },
+    "as-0024": {
+      "status": "deployed"
+    },
+    "as-0025": {
+      "status": "deployed"
+    },
+    "as-0026": {
+      "status": "deployed"
+    },
+    "as-0027": {
+      "status": "deployed"
+    },
+    "as-0028": {
+      "status": "deployed"
+    },
+    "as-0029": {
+      "status": "deployed"
+    },
+    "as-0030": {
+      "status": "deployed"
+    },
+    "as-0031": {
+      "status": "deployed"
+    },
+    "as-0032": {
+      "status": "deployed"
+    },
+    "as-0033": {
+      "status": "deployed"
+    },
+    "as-0034": {
+      "status": "deployed"
+    },
+    "as-0035": {
+      "status": "deployed"
+    },
+    "as-0036": {
+      "status": "deployed"
+    },
+    "as-0037": {
+      "status": "deployed"
+    },
+    "as-0038": {
+      "status": "deployed"
+    },
+    "as-0039": {
+      "status": "deployed"
+    },
+    "as-0040": {
+      "status": "deployed"
+    },
+    "as-0041": {
+      "status": "deployed"
+    },
+    "as-0042": {
+      "status": "deployed"
+    },
+    "as-0043": {
+      "status": "deployed"
+    },
+    "as-0044": {
+      "status": "deployed"
+    },
+    "as-0045": {
+      "status": "deployed"
+    },
+    "as-0046": {
+      "status": "deployed"
+    },
+    "as-0047": {
+      "status": "deployed"
+    },
+    "as-0048": {
+      "status": "deployed"
+    },
+    "as-0049": {
+      "status": "deployed"
+    },
+    "as-0050": {
+      "status": "deployed"
+    },
+    "as-0051": {
+      "status": "deployed"
+    },
+    "as-0052": {
+      "status": "deployed"
+    },
+    "as-0053": {
+      "status": "deployed"
+    },
+    "as-0054": {
+      "status": "deployed"
+    },
+    "as-0055": {
+      "status": "deployed"
+    },
+    "as-0056": {
+      "status": "deployed"
+    },
+    "as-0057": {
+      "status": "deployed"
+    },
+    "as-0058": {
+      "status": "deployed"
+    },
+    "as-0059": {
+      "status": "deployed"
+    },
+    "as-0060": {
+      "status": "deployed"
+    },
+    "as-0061": {
+      "status": "deployed"
+    },
+    "as-0062": {
+      "status": "deployed"
+    },
+    "as-0063": {
+      "status": "deployed"
+    },
+    "as-0064": {
+      "status": "deployed"
+    },
+    "as-0065": {
+      "status": "deployed"
+    },
+    "as-0066": {
+      "status": "deployed"
+    },
+    "as-0067": {
+      "status": "deployed"
+    },
+    "as-0068": {
+      "status": "deployed"
+    },
+    "as-0069": {
+      "status": "deployed"
+    },
+    "as-0070": {
+      "status": "deployed"
+    },
+    "as-0071": {
+      "status": "deployed"
+    },
+    "as-0072": {
+      "status": "deployed"
+    },
+    "as-0073": {
+      "status": "deployed"
+    },
+    "as-0074": {
+      "status": "deployed"
+    },
+    "as-0075": {
+      "status": "deployed"
+    },
+    "as-0076": {
+      "status": "deployed"
+    },
+    "as-0077": {
+      "status": "deployed"
+    },
+    "as-0078": {
+      "status": "deployed"
+    },
+    "as-0079": {
+      "status": "deployed"
+    },
+    "as-0080": {
+      "status": "deployed"
+    },
+    "as-0081": {
+      "status": "deployed"
+    },
+    "as-0082": {
+      "status": "deployed"
+    },
+    "as-0083": {
+      "status": "deployed"
+    },
+    "as-0084": {
+      "status": "deployed"
+    },
+    "as-0085": {
+      "status": "deployed"
+    },
+    "as-0086": {
+      "status": "deployed"
+    },
+    "as-0087": {
+      "status": "deployed"
+    },
+    "as-0088": {
+      "status": "deployed"
+    },
+    "as-0089": {
+      "status": "deployed"
+    },
+    "as-0090": {
+      "status": "deployed"
+    },
+    "as-0091": {
+      "status": "deployed"
+    },
+    "as-0092": {
+      "status": "deployed"
+    },
+    "as-0093": {
+      "status": "deployed"
+    },
+    "as-0094": {
+      "status": "deployed"
+    },
+    "as-0095": {
+      "status": "deployed"
+    },
+    "as-0096": {
+      "status": "deployed"
+    },
+    "as-0097": {
+      "status": "deployed"
+    },
+    "as-0098": {
+      "status": "deployed"
+    },
+    "as-0099": {
+      "status": "deployed"
+    },
+    "as-0100": {
+      "status": "deployed"
+    },
+    "as-0101": {
+      "status": "deployed"
+    },
+    "as-0102": {
+      "status": "deployed"
+    },
+    "as-0103": {
+      "status": "deployed"
+    },
+    "as-0104": {
+      "status": "deployed"
+    },
+    "as-0105": {
+      "status": "deployed"
+    },
+    "as-0106": {
+      "status": "deployed"
+    },
+    "as-0107": {
+      "status": "deployed"
+    },
+    "as-0108": {
+      "status": "deployed"
+    },
+    "as-0109": {
+      "status": "deployed"
+    },
+    "as-0110": {
+      "status": "deployed"
+    },
+    "as-0111": {
+      "status": "deployed"
+    },
+    "as-0112": {
+      "status": "deployed"
+    },
+    "as-0113": {
+      "status": "deployed"
+    },
+    "as-0114": {
+      "status": "deployed"
+    },
+    "as-0115": {
+      "status": "deployed"
+    },
+    "as-0116": {
+      "status": "deployed"
+    },
+    "as-0117": {
+      "status": "deployed"
+    },
+    "as-0118": {
+      "status": "deployed"
+    },
+    "as-0119": {
+      "status": "deployed"
+    },
+    "as-0120": {
+      "status": "deployed"
+    },
+    "as-0121": {
+      "status": "deployed"
+    },
+    "as-0122": {
+      "status": "deployed"
+    },
+    "as-0123": {
+      "status": "deployed"
+    },
+    "as-0124": {
+      "status": "deployed"
+    },
+    "as-0125": {
+      "status": "deployed"
+    },
+    "as-0126": {
+      "status": "deployed"
+    },
+    "as-0127": {
+      "status": "deployed"
+    },
+    "as-0128": {
+      "status": "deployed"
+    },
+    "as-0129": {
+      "status": "deployed"
+    },
+    "as-0130": {
+      "status": "deployed"
+    },
+    "as-0131": {
+      "status": "deployed"
+    },
+    "as-0132": {
+      "status": "deployed"
+    },
+    "as-0133": {
+      "status": "deployed"
+    },
+    "as-0134": {
+      "status": "deployed"
+    },
+    "as-0135": {
+      "status": "deployed"
+    },
+    "as-0136": {
+      "status": "deployed"
+    },
+    "as-0137": {
+      "status": "deployed"
+    },
+    "as-0138": {
+      "status": "deployed"
+    },
+    "as-0139": {
+      "status": "deployed"
+    },
+    "as-0140": {
+      "status": "deployed"
+    },
+    "as-0141": {
+      "status": "deployed"
+    },
+    "as-0142": {
+      "status": "deployed"
+    },
+    "as-0143": {
+      "status": "deployed"
+    },
+    "as-0144": {
+      "status": "deployed"
+    },
+    "as-0145": {
+      "status": "deployed"
+    },
+    "as-0146": {
+      "status": "deployed"
+    },
+    "as-0147": {
+      "status": "deployed"
+    },
+    "as-0148": {
+      "status": "deployed"
+    },
+    "as-0149": {
+      "status": "deployed"
+    },
+    "as-0150": {
+      "status": "deployed"
+    },
+    "as-0151": {
+      "status": "deployed"
+    },
+    "as-0152": {
+      "status": "deployed"
+    },
+    "as-0153": {
+      "status": "deployed"
+    },
+    "as-0154": {
+      "status": "deployed"
+    },
+    "as-0155": {
+      "status": "deployed"
+    },
+    "as-0156": {
+      "status": "deployed"
+    },
+    "as-0157": {
+      "status": "deployed"
+    },
+    "as-0158": {
+      "status": "deployed"
+    },
+    "as-0159": {
+      "status": "deployed"
+    },
+    "as-0160": {
+      "status": "deployed"
+    },
+    "as-0161": {
+      "status": "deployed"
+    },
+    "as-0162": {
+      "status": "deployed"
+    },
+    "as-0163": {
+      "status": "deployed"
+    },
+    "as-0164": {
+      "status": "deployed"
+    },
+    "as-0165": {
+      "status": "deployed"
+    },
+    "as-0166": {
+      "status": "deployed"
+    },
+    "as-0167": {
+      "status": "deployed"
+    },
+    "as-0168": {
+      "status": "deployed"
+    },
+    "as-0169": {
+      "status": "deployed"
+    },
+    "as-0170": {
+      "status": "deployed"
+    },
+    "as-0171": {
+      "status": "deployed"
+    },
+    "as-0172": {
+      "status": "deployed"
+    },
+    "as-0173": {
+      "status": "deployed"
+    },
+    "as-0174": {
+      "status": "deployed"
+    },
+    "as-0175": {
+      "status": "deployed"
+    },
+    "as-0176": {
+      "status": "deployed"
+    },
+    "as-0177": {
+      "status": "deployed"
+    },
+    "as-0178": {
+      "status": "deployed"
+    },
+    "as-0179": {
+      "status": "deployed"
+    },
+    "as-0180": {
+      "status": "deployed"
+    },
+    "as-0181": {
+      "status": "deployed"
+    },
+    "as-0182": {
+      "status": "deployed"
+    },
+    "as-0183": {
+      "status": "deployed"
+    },
+    "as-0184": {
+      "status": "deployed"
+    },
+    "as-0185": {
+      "status": "deployed"
+    },
+    "as-0186": {
+      "status": "deployed"
+    },
+    "as-0187": {
+      "status": "deployed"
+    },
+    "as-0188": {
+      "status": "deployed"
+    },
+    "as-0189": {
+      "status": "deployed"
+    },
+    "as-0190": {
+      "status": "deployed"
+    },
+    "as-0191": {
+      "status": "deployed"
+    },
+    "as-0192": {
+      "status": "deployed"
+    },
+    "as-0193": {
+      "status": "deployed"
+    },
+    "as-0194": {
+      "status": "deployed"
+    },
+    "as-0195": {
+      "status": "deployed"
+    },
+    "as-0196": {
+      "status": "deployed"
+    },
+    "as-0197": {
+      "status": "deployed"
+    },
+    "as-0198": {
+      "status": "deployed"
+    },
+    "as-0199": {
+      "status": "deployed"
+    },
+    "as-0200": {
+      "status": "deployed"
+    },
+    "as-0201": {
+      "status": "deployed"
+    },
+    "as-0202": {
+      "status": "deployed"
+    },
+    "as-0203": {
+      "status": "deployed"
+    },
+    "as-0204": {
+      "status": "deployed"
+    },
+    "as-0205": {
+      "status": "deployed"
+    },
+    "as-0206": {
+      "status": "deployed"
+    },
+    "as-0207": {
+      "status": "deployed"
+    },
+    "as-0208": {
+      "status": "deployed"
+    },
+    "as-0209": {
+      "status": "deployed"
+    },
+    "as-0210": {
+      "status": "deployed"
+    },
+    "as-0211": {
+      "status": "deployed"
+    },
+    "as-0212": {
+      "status": "deployed"
+    },
+    "as-0213": {
+      "status": "deployed"
+    },
+    "as-0214": {
+      "status": "deployed"
+    },
+    "as-0215": {
+      "status": "deployed"
+    },
+    "as-0216": {
+      "status": "deployed"
+    },
+    "as-0217": {
+      "status": "deployed"
+    },
+    "as-0218": {
+      "status": "deployed"
+    },
+    "as-0219": {
+      "status": "deployed"
+    },
+    "as-0220": {
+      "status": "deployed"
+    },
+    "as-0221": {
+      "status": "deployed"
+    },
+    "as-0222": {
+      "status": "deployed"
+    },
+    "as-0223": {
+      "status": "deployed"
+    },
+    "as-0224": {
+      "status": "deployed"
+    },
+    "as-0225": {
+      "status": "deployed"
+    },
+    "as-0226": {
+      "status": "deployed"
+    },
+    "as-0227": {
+      "status": "deployed"
+    },
+    "as-0228": {
+      "status": "deployed"
+    },
+    "as-0229": {
+      "status": "deployed"
+    },
+    "as-0230": {
+      "status": "deployed"
+    },
+    "as-0231": {
+      "status": "deployed"
+    },
+    "as-0232": {
+      "status": "deployed"
+    },
+    "as-0233": {
+      "status": "deployed"
+    },
+    "as-0234": {
+      "status": "deployed"
+    },
+    "as-0235": {
+      "status": "deployed"
+    },
+    "as-0236": {
+      "status": "deployed"
+    },
+    "as-0237": {
+      "status": "deployed"
+    },
+    "as-0238": {
+      "status": "deployed"
+    },
+    "as-0239": {
+      "status": "deployed"
+    },
+    "as-0240": {
+      "status": "deployed"
+    },
+    "as-0241": {
+      "status": "deployed"
+    },
+    "as-0242": {
+      "status": "deployed"
+    },
+    "as-0243": {
+      "status": "deployed"
+    },
+    "as-0244": {
+      "status": "deployed"
+    },
+    "as-0245": {
+      "status": "deployed"
+    },
+    "as-0246": {
+      "status": "deployed"
+    },
+    "as-0247": {
+      "status": "deployed"
+    },
+    "as-0248": {
+      "status": "deployed"
+    },
+    "as-0249": {
+      "status": "deployed"
+    },
+    "as-0250": {
+      "status": "deployed"
+    },
+    "as-0251": {
+      "status": "deployed"
+    },
+    "as-0252": {
+      "status": "deployed"
+    },
+    "as-0253": {
+      "status": "deployed"
+    },
+    "as-0254": {
+      "status": "deployed"
+    },
+    "as-0255": {
+      "status": "deployed"
+    },
+    "as-0256": {
+      "status": "deployed"
+    },
+    "as-0257": {
+      "status": "deployed"
+    },
+    "as-0258": {
+      "status": "deployed"
+    },
+    "as-0259": {
+      "status": "deployed"
+    },
+    "as-0260": {
+      "status": "deployed"
+    },
+    "as-0261": {
+      "status": "deployed"
+    },
+    "as-0262": {
+      "status": "deployed"
+    },
+    "as-0263": {
+      "status": "deployed"
+    },
+    "as-0264": {
+      "status": "deployed"
+    },
+    "as-0265": {
+      "status": "deployed"
+    },
+    "as-0266": {
+      "status": "deployed"
+    },
+    "as-0267": {
+      "status": "deployed"
+    },
+    "as-0268": {
+      "status": "deployed"
+    },
+    "as-0269": {
+      "status": "deployed"
+    },
+    "as-0270": {
+      "status": "deployed"
+    },
+    "as-0271": {
+      "status": "deployed"
+    },
+    "as-0272": {
+      "status": "deployed"
+    },
+    "as-0273": {
+      "status": "deployed"
+    },
+    "as-0274": {
+      "status": "deployed"
+    },
+    "as-0275": {
+      "status": "deployed"
+    },
+    "as-0276": {
+      "status": "deployed"
+    },
+    "as-0277": {
+      "status": "deployed"
+    },
+    "as-0278": {
+      "status": "deployed"
+    },
+    "as-0279": {
+      "status": "deployed"
+    },
+    "as-0280": {
+      "status": "deployed"
+    },
+    "as-0281": {
+      "status": "deployed"
+    },
+    "as-0282": {
+      "status": "deployed"
+    },
+    "as-0283": {
+      "status": "deployed"
+    },
+    "as-0284": {
+      "status": "deployed"
+    },
+    "as-0285": {
+      "status": "deployed"
+    },
+    "as-0286": {
+      "status": "deployed"
+    },
+    "as-0287": {
+      "status": "deployed"
+    },
+    "as-0288": {
+      "status": "deployed"
+    },
+    "as-0289": {
+      "status": "deployed"
+    },
+    "as-0290": {
+      "status": "deployed"
+    },
+    "as-0291": {
+      "status": "deployed"
+    },
+    "as-0292": {
+      "status": "deployed"
+    },
+    "as-0293": {
+      "status": "deployed"
+    },
+    "as-0294": {
+      "status": "deployed"
+    },
+    "as-0295": {
+      "status": "deployed"
+    },
+    "as-0296": {
+      "status": "deployed"
+    },
+    "as-0297": {
+      "status": "deployed"
+    },
+    "as-0298": {
+      "status": "deployed"
+    },
+    "as-0299": {
+      "status": "deployed"
+    },
+    "as-0300": {
+      "status": "deployed"
+    }
+  }
+}
