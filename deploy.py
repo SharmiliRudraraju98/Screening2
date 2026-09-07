@@ -55,33 +55,17 @@ class NeedsHumanDecision(RuntimeError):
     """Raised when proceeding safely is not possible without a human call."""
 
 
-def build_snapshot(client=None):
-    """One full paged read of GET /s2/destination -> {asset_id: [rows]}.
+def read_all_destination_rows(client=None):
+    """Every deploy row in the destination, deduplicated by its own row id.
 
-    Take this ONCE before a batch. It is stale the moment we start writing;
-    deploy_asset only reads it for the up-front already-present check.
+    GET /s2/destination paginates with an overlapping window -- the same
+    dep-N row comes back on two consecutive pages, byte-identical (the same
+    bug GET /s2/assets has). Counting rows per asset_id without collapsing
+    by row id invents phantom duplicates. Everything that needs to know
+    "how many real rows does this asset have" must go through here.
     """
     client = client or HttpClient()
-    snap = {}
-    cursor = None
-    while True:
-        params = {"cursor": cursor} if cursor is not None else None
-        resp = client.get(DESTINATION_PATH, params=params)
-        if resp.status_code != 200:
-            raise RuntimeError(
-                f"GET {DESTINATION_PATH} -> {resp.status_code}: {resp.text[:200]}")
-        data = resp.json()
-        for row in data.get("items", []):
-            snap.setdefault(row["asset_id"], []).append(row)
-        cursor = data.get("next_cursor")
-        if not cursor:
-            break
-    return snap
-
-
-def _destination_rows(client, asset_id):
-    """All destination rows whose asset_id matches. Pages if needed."""
-    rows = []
+    by_row_id = {}
     cursor = None
     while True:
         params = {"cursor": cursor} if cursor is not None else None
@@ -91,12 +75,36 @@ def _destination_rows(client, asset_id):
                 f"GET {DESTINATION_PATH} -> {resp.status_code} {resp.reason}: "
                 f"{resp.text[:200]}")
         data = resp.json()
-        rows.extend(r for r in data.get("items", [])
-                    if r.get("asset_id") == asset_id)
+        for row in data.get("items", []):
+            existing = by_row_id.get(row["id"])
+            if existing is not None and existing != row:
+                raise RuntimeError(
+                    f"destination row {row['id']} returned twice with "
+                    f"different content: {existing!r} vs {row!r}")
+            by_row_id[row["id"]] = row
         cursor = data.get("next_cursor")
         if not cursor:
             break
-    return rows
+    return list(by_row_id.values())
+
+
+def build_snapshot(client=None):
+    """One full paged read of GET /s2/destination -> {asset_id: [rows]}.
+
+    Rows are deduplicated by row id (see read_all_destination_rows). Take
+    this ONCE before a batch; it is stale the moment we start writing.
+    """
+    client = client or HttpClient()
+    snap = {}
+    for row in read_all_destination_rows(client):
+        snap.setdefault(row["asset_id"], []).append(row)
+    return snap
+
+
+def _destination_rows(client, asset_id):
+    """The real destination rows for one asset, deduplicated by row id."""
+    return [r for r in read_all_destination_rows(client)
+            if r.get("asset_id") == asset_id]
 
 
 def deploy_asset(asset_id, checksum, *, client=None, journal=None,

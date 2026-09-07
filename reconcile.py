@@ -14,28 +14,20 @@ ambiguous answer for, where the destination still shows nothing.
 from collections import Counter
 
 from client import HttpClient
+from deploy import read_all_destination_rows
 from journal import Journal
 
 DESTINATION_PATH = "/s2/destination"
 
 
 def destination_counts(client=None):
-    """asset_id -> number of dep rows currently in the destination."""
+    """asset_id -> number of REAL dep rows in the destination.
+
+    Rows are deduplicated by row id first (GET /s2/destination paginates
+    with an overlapping window that repeats boundary rows verbatim).
+    """
     client = client or HttpClient()
-    counts = Counter()
-    cursor = None
-    while True:
-        params = {"cursor": cursor} if cursor is not None else None
-        resp = client.get(DESTINATION_PATH, params=params)
-        if resp.status_code != 200:
-            raise RuntimeError(
-                f"GET {DESTINATION_PATH} -> {resp.status_code}: {resp.text[:200]}")
-        data = resp.json()
-        for row in data.get("items", []):
-            counts[row["asset_id"]] += 1
-        cursor = data.get("next_cursor")
-        if not cursor:
-            break
+    counts = Counter(r["asset_id"] for r in read_all_destination_rows(client))
     return dict(counts)
 
 

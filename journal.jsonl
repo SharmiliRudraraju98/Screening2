@@ -186,3 +186,157 @@
 {"ts": "2026-09-07T14:51:52.871300+00:00", "event": "bind_key", "asset_id": "as-0081", "idempotency_key": "as-key-as-0081"}
 {"ts": "2026-09-07T14:51:52.871423+00:00", "event": "deploy_attempt", "asset_id": "as-0081", "idempotency_key": "as-key-as-0081", "checksum": "27ppok"}
 {"ts": "2026-09-07T14:51:52.936372+00:00", "event": "outcome", "asset_id": "as-0081", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:23.888507+00:00", "event": "bind_key", "asset_id": "as-0004", "idempotency_key": "as-key-as-0004"}
+{"ts": "2026-09-07T14:56:23.888808+00:00", "event": "bind_key", "asset_id": "as-0025", "idempotency_key": "as-key-as-0025"}
+{"ts": "2026-09-07T14:56:23.889339+00:00", "event": "bind_key", "asset_id": "as-0028", "idempotency_key": "as-key-as-0028"}
+{"ts": "2026-09-07T14:56:23.890079+00:00", "event": "bind_key", "asset_id": "as-0010", "idempotency_key": "as-key-as-0010"}
+{"ts": "2026-09-07T14:56:23.890467+00:00", "event": "bind_key", "asset_id": "as-0037", "idempotency_key": "as-key-as-0037"}
+{"ts": "2026-09-07T14:56:23.890685+00:00", "event": "deploy_attempt", "asset_id": "as-0004", "idempotency_key": "as-key-as-0004", "checksum": "81wv07"}
+{"ts": "2026-09-07T14:56:23.891407+00:00", "event": "bind_key", "asset_id": "as-0057", "idempotency_key": "as-key-as-0057"}
+{"ts": "2026-09-07T14:56:23.891806+00:00", "event": "bind_key", "asset_id": "as-0044", "idempotency_key": "as-key-as-0044"}
+{"ts": "2026-09-07T14:56:23.892232+00:00", "event": "bind_key", "asset_id": "as-0082", "idempotency_key": "as-key-as-0082"}
+{"ts": "2026-09-07T14:56:23.892322+00:00", "event": "deploy_attempt", "asset_id": "as-0025", "idempotency_key": "as-key-as-0025", "checksum": "u4oed"}
+{"ts": "2026-09-07T14:56:23.892660+00:00", "event": "bind_key", "asset_id": "as-0083", "idempotency_key": "as-key-as-0083"}
+{"ts": "2026-09-07T14:56:23.892983+00:00", "event": "bind_key", "asset_id": "as-0085", "idempotency_key": "as-key-as-0085"}
+{"ts": "2026-09-07T14:56:23.894591+00:00", "event": "bind_key", "asset_id": "as-0084", "idempotency_key": "as-key-as-0084"}
+{"ts": "2026-09-07T14:56:23.895038+00:00", "event": "bind_key", "asset_id": "as-0086", "idempotency_key": "as-key-as-0086"}
+{"ts": "2026-09-07T14:56:23.895104+00:00", "event": "deploy_attempt", "asset_id": "as-0028", "idempotency_key": "as-key-as-0028", "checksum": "8wo6i0"}
+{"ts": "2026-09-07T14:56:23.895697+00:00", "event": "bind_key", "asset_id": "as-0087", "idempotency_key": "as-key-as-0087"}
+{"ts": "2026-09-07T14:56:23.896083+00:00", "event": "bind_key", "asset_id": "as-0088", "idempotency_key": "as-key-as-0088"}
+{"ts": "2026-09-07T14:56:23.896443+00:00", "event": "bind_key", "asset_id": "as-0089", "idempotency_key": "as-key-as-0089"}
+{"ts": "2026-09-07T14:56:23.896942+00:00", "event": "bind_key", "asset_id": "as-0090", "idempotency_key": "as-key-as-0090"}
+{"ts": "2026-09-07T14:56:23.897160+00:00", "event": "deploy_attempt", "asset_id": "as-0010", "idempotency_key": "as-key-as-0010", "checksum": "d01ppb"}
+{"ts": "2026-09-07T14:56:23.897567+00:00", "event": "bind_key", "asset_id": "as-0092", "idempotency_key": "as-key-as-0092"}
+{"ts": "2026-09-07T14:56:23.897968+00:00", "event": "bind_key", "asset_id": "as-0095", "idempotency_key": "as-key-as-0095"}
+{"ts": "2026-09-07T14:56:23.898393+00:00", "event": "bind_key", "asset_id": "as-0091", "idempotency_key": "as-key-as-0091"}
+{"ts": "2026-09-07T14:56:23.898737+00:00", "event": "bind_key", "asset_id": "as-0093", "idempotency_key": "as-key-as-0093"}
+{"ts": "2026-09-07T14:56:23.899349+00:00", "event": "bind_key", "asset_id": "as-0094", "idempotency_key": "as-key-as-0094"}
+{"ts": "2026-09-07T14:56:23.899395+00:00", "event": "deploy_attempt", "asset_id": "as-0037", "idempotency_key": "as-key-as-0037", "checksum": "35r8ns"}
+{"ts": "2026-09-07T14:56:23.899928+00:00", "event": "bind_key", "asset_id": "as-0097", "idempotency_key": "as-key-as-0097"}
+{"ts": "2026-09-07T14:56:23.900320+00:00", "event": "bind_key", "asset_id": "as-0098", "idempotency_key": "as-key-as-0098"}
+{"ts": "2026-09-07T14:56:23.900683+00:00", "event": "bind_key", "asset_id": "as-0096", "idempotency_key": "as-key-as-0096"}
+{"ts": "2026-09-07T14:56:23.901255+00:00", "event": "bind_key", "asset_id": "as-0099", "idempotency_key": "as-key-as-0099"}
+{"ts": "2026-09-07T14:56:23.901741+00:00", "event": "deploy_attempt", "asset_id": "as-0057", "idempotency_key": "as-key-as-0057", "checksum": "f77pvf"}
+{"ts": "2026-09-07T14:56:23.901888+00:00", "event": "deploy_attempt", "asset_id": "as-0044", "idempotency_key": "as-key-as-0044", "checksum": "7iq1eb"}
+{"ts": "2026-09-07T14:56:23.902025+00:00", "event": "deploy_attempt", "asset_id": "as-0082", "idempotency_key": "as-key-as-0082", "checksum": "2x2a9v"}
+{"ts": "2026-09-07T14:56:23.902576+00:00", "event": "deploy_attempt", "asset_id": "as-0083", "idempotency_key": "as-key-as-0083", "checksum": "etsb20"}
+{"ts": "2026-09-07T14:56:23.902850+00:00", "event": "deploy_attempt", "asset_id": "as-0085", "idempotency_key": "as-key-as-0085", "checksum": "3wjvcb"}
+{"ts": "2026-09-07T14:56:23.902928+00:00", "event": "deploy_attempt", "asset_id": "as-0084", "idempotency_key": "as-key-as-0084", "checksum": "ey16b1"}
+{"ts": "2026-09-07T14:56:23.903002+00:00", "event": "deploy_attempt", "asset_id": "as-0086", "idempotency_key": "as-key-as-0086", "checksum": "60mysg"}
+{"ts": "2026-09-07T14:56:23.903372+00:00", "event": "deploy_attempt", "asset_id": "as-0087", "idempotency_key": "as-key-as-0087", "checksum": "cr8uap"}
+{"ts": "2026-09-07T14:56:23.903545+00:00", "event": "deploy_attempt", "asset_id": "as-0088", "idempotency_key": "as-key-as-0088", "checksum": "f2zn4k"}
+{"ts": "2026-09-07T14:56:23.903610+00:00", "event": "deploy_attempt", "asset_id": "as-0089", "idempotency_key": "as-key-as-0089", "checksum": "dne7pz"}
+{"ts": "2026-09-07T14:56:23.903676+00:00", "event": "deploy_attempt", "asset_id": "as-0090", "idempotency_key": "as-key-as-0090", "checksum": "g8inmr"}
+{"ts": "2026-09-07T14:56:23.903998+00:00", "event": "deploy_attempt", "asset_id": "as-0092", "idempotency_key": "as-key-as-0092", "checksum": "3lh0q9"}
+{"ts": "2026-09-07T14:56:23.904149+00:00", "event": "deploy_attempt", "asset_id": "as-0095", "idempotency_key": "as-key-as-0095", "checksum": "pv1yw"}
+{"ts": "2026-09-07T14:56:23.904209+00:00", "event": "deploy_attempt", "asset_id": "as-0091", "idempotency_key": "as-key-as-0091", "checksum": "83dh19"}
+{"ts": "2026-09-07T14:56:23.904270+00:00", "event": "deploy_attempt", "asset_id": "as-0093", "idempotency_key": "as-key-as-0093", "checksum": "71fhbq"}
+{"ts": "2026-09-07T14:56:23.904327+00:00", "event": "deploy_attempt", "asset_id": "as-0094", "idempotency_key": "as-key-as-0094", "checksum": "amjs96"}
+{"ts": "2026-09-07T14:56:23.904645+00:00", "event": "deploy_attempt", "asset_id": "as-0097", "idempotency_key": "as-key-as-0097", "checksum": "3dexe0"}
+{"ts": "2026-09-07T14:56:23.904805+00:00", "event": "deploy_attempt", "asset_id": "as-0098", "idempotency_key": "as-key-as-0098", "checksum": "53mcgz"}
+{"ts": "2026-09-07T14:56:23.904876+00:00", "event": "deploy_attempt", "asset_id": "as-0096", "idempotency_key": "as-key-as-0096", "checksum": "94cz1f"}
+{"ts": "2026-09-07T14:56:23.905002+00:00", "event": "deploy_attempt", "asset_id": "as-0099", "idempotency_key": "as-key-as-0099", "checksum": "5288i6"}
+{"ts": "2026-09-07T14:56:23.973189+00:00", "event": "outcome", "asset_id": "as-0004", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:23.973800+00:00", "event": "bind_key", "asset_id": "as-0100", "idempotency_key": "as-key-as-0100"}
+{"ts": "2026-09-07T14:56:23.973869+00:00", "event": "deploy_attempt", "asset_id": "as-0100", "idempotency_key": "as-key-as-0100", "checksum": "sfn2w"}
+{"ts": "2026-09-07T14:56:24.037805+00:00", "event": "outcome", "asset_id": "as-0100", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.038549+00:00", "event": "bind_key", "asset_id": "as-0101", "idempotency_key": "as-key-as-0101"}
+{"ts": "2026-09-07T14:56:24.038620+00:00", "event": "deploy_attempt", "asset_id": "as-0101", "idempotency_key": "as-key-as-0101", "checksum": "7jnu6r"}
+{"ts": "2026-09-07T14:56:24.048011+00:00", "event": "outcome", "asset_id": "as-0025", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.048634+00:00", "event": "bind_key", "asset_id": "as-0102", "idempotency_key": "as-key-as-0102"}
+{"ts": "2026-09-07T14:56:24.048700+00:00", "event": "deploy_attempt", "asset_id": "as-0102", "idempotency_key": "as-key-as-0102", "checksum": "c6st0"}
+{"ts": "2026-09-07T14:56:24.054919+00:00", "event": "outcome", "asset_id": "as-0010", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.055551+00:00", "event": "bind_key", "asset_id": "as-0103", "idempotency_key": "as-key-as-0103"}
+{"ts": "2026-09-07T14:56:24.055955+00:00", "event": "deploy_attempt", "asset_id": "as-0103", "idempotency_key": "as-key-as-0103", "checksum": "75pmcu"}
+{"ts": "2026-09-07T14:56:24.055910+00:00", "event": "outcome", "asset_id": "as-0082", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.056915+00:00", "event": "bind_key", "asset_id": "as-0104", "idempotency_key": "as-key-as-0104"}
+{"ts": "2026-09-07T14:56:24.057060+00:00", "event": "deploy_attempt", "asset_id": "as-0104", "idempotency_key": "as-key-as-0104", "checksum": "3ae0ld"}
+{"ts": "2026-09-07T14:56:24.058054+00:00", "event": "outcome", "asset_id": "as-0090", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.058521+00:00", "event": "bind_key", "asset_id": "as-0105", "idempotency_key": "as-key-as-0105"}
+{"ts": "2026-09-07T14:56:24.058572+00:00", "event": "deploy_attempt", "asset_id": "as-0105", "idempotency_key": "as-key-as-0105", "checksum": "5j5rtb"}
+{"ts": "2026-09-07T14:56:24.071619+00:00", "event": "outcome", "asset_id": "as-0085", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.072096+00:00", "event": "bind_key", "asset_id": "as-0106", "idempotency_key": "as-key-as-0106"}
+{"ts": "2026-09-07T14:56:24.072151+00:00", "event": "deploy_attempt", "asset_id": "as-0106", "idempotency_key": "as-key-as-0106", "checksum": "19x407"}
+{"ts": "2026-09-07T14:56:24.077904+00:00", "event": "outcome", "asset_id": "as-0044", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.077979+00:00", "event": "outcome", "asset_id": "as-0028", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.078475+00:00", "event": "bind_key", "asset_id": "as-0107", "idempotency_key": "as-key-as-0107"}
+{"ts": "2026-09-07T14:56:24.078531+00:00", "event": "deploy_attempt", "asset_id": "as-0107", "idempotency_key": "as-key-as-0107", "checksum": "e4fq3v"}
+{"ts": "2026-09-07T14:56:24.078934+00:00", "event": "bind_key", "asset_id": "as-0108", "idempotency_key": "as-key-as-0108"}
+{"ts": "2026-09-07T14:56:24.079151+00:00", "event": "deploy_attempt", "asset_id": "as-0108", "idempotency_key": "as-key-as-0108", "checksum": "b6yfu5"}
+{"ts": "2026-09-07T14:56:24.079818+00:00", "event": "outcome", "asset_id": "as-0057", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.080352+00:00", "event": "bind_key", "asset_id": "as-0109", "idempotency_key": "as-key-as-0109"}
+{"ts": "2026-09-07T14:56:24.080406+00:00", "event": "deploy_attempt", "asset_id": "as-0109", "idempotency_key": "as-key-as-0109", "checksum": "gh8acw"}
+{"ts": "2026-09-07T14:56:24.082716+00:00", "event": "outcome", "asset_id": "as-0084", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.083184+00:00", "event": "bind_key", "asset_id": "as-0110", "idempotency_key": "as-key-as-0110"}
+{"ts": "2026-09-07T14:56:24.083233+00:00", "event": "deploy_attempt", "asset_id": "as-0110", "idempotency_key": "as-key-as-0110", "checksum": "1ahb43"}
+{"ts": "2026-09-07T14:56:24.084044+00:00", "event": "outcome", "asset_id": "as-0095", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.084522+00:00", "event": "bind_key", "asset_id": "as-0111", "idempotency_key": "as-key-as-0111"}
+{"ts": "2026-09-07T14:56:24.084563+00:00", "event": "deploy_attempt", "asset_id": "as-0111", "idempotency_key": "as-key-as-0111", "checksum": "8tk1p1"}
+{"ts": "2026-09-07T14:56:24.103050+00:00", "event": "outcome", "asset_id": "as-0092", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.103731+00:00", "event": "bind_key", "asset_id": "as-0112", "idempotency_key": "as-key-as-0112"}
+{"ts": "2026-09-07T14:56:24.103998+00:00", "event": "deploy_attempt", "asset_id": "as-0112", "idempotency_key": "as-key-as-0112", "checksum": "68p8f"}
+{"ts": "2026-09-07T14:56:24.104279+00:00", "event": "outcome", "asset_id": "as-0089", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.104599+00:00", "event": "outcome", "asset_id": "as-0037", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.105662+00:00", "event": "bind_key", "asset_id": "as-0113", "idempotency_key": "as-key-as-0113"}
+{"ts": "2026-09-07T14:56:24.106317+00:00", "event": "deploy_attempt", "asset_id": "as-0113", "idempotency_key": "as-key-as-0113", "checksum": "7m0czp"}
+{"ts": "2026-09-07T14:56:24.106282+00:00", "event": "bind_key", "asset_id": "as-0114", "idempotency_key": "as-key-as-0114"}
+{"ts": "2026-09-07T14:56:24.106627+00:00", "event": "deploy_attempt", "asset_id": "as-0114", "idempotency_key": "as-key-as-0114", "checksum": "cwpboh"}
+{"ts": "2026-09-07T14:56:24.110449+00:00", "event": "outcome", "asset_id": "as-0097", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.111126+00:00", "event": "bind_key", "asset_id": "as-0115", "idempotency_key": "as-key-as-0115"}
+{"ts": "2026-09-07T14:56:24.111377+00:00", "event": "deploy_attempt", "asset_id": "as-0115", "idempotency_key": "as-key-as-0115", "checksum": "1a5a3a"}
+{"ts": "2026-09-07T14:56:24.111443+00:00", "event": "outcome", "asset_id": "as-0083", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.112351+00:00", "event": "bind_key", "asset_id": "as-0116", "idempotency_key": "as-key-as-0116"}
+{"ts": "2026-09-07T14:56:24.112778+00:00", "event": "deploy_attempt", "asset_id": "as-0116", "idempotency_key": "as-key-as-0116", "checksum": "wp7mv"}
+{"ts": "2026-09-07T14:56:24.112821+00:00", "event": "outcome", "asset_id": "as-0086", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.113983+00:00", "event": "bind_key", "asset_id": "as-0117", "idempotency_key": "as-key-as-0117"}
+{"ts": "2026-09-07T14:56:24.114093+00:00", "event": "deploy_attempt", "asset_id": "as-0117", "idempotency_key": "as-key-as-0117", "checksum": "5ey56l"}
+{"ts": "2026-09-07T14:56:24.120962+00:00", "event": "outcome", "asset_id": "as-0091", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.121019+00:00", "event": "outcome", "asset_id": "as-0093", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.122207+00:00", "event": "bind_key", "asset_id": "as-0119", "idempotency_key": "as-key-as-0119"}
+{"ts": "2026-09-07T14:56:24.122967+00:00", "event": "deploy_attempt", "asset_id": "as-0119", "idempotency_key": "as-key-as-0119", "checksum": "f78x7u"}
+{"ts": "2026-09-07T14:56:24.122888+00:00", "event": "bind_key", "asset_id": "as-0118", "idempotency_key": "as-key-as-0118"}
+{"ts": "2026-09-07T14:56:24.123473+00:00", "event": "deploy_attempt", "asset_id": "as-0118", "idempotency_key": "as-key-as-0118", "checksum": "2xyg9"}
+{"ts": "2026-09-07T14:56:24.125542+00:00", "event": "outcome", "asset_id": "as-0098", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.126165+00:00", "event": "bind_key", "asset_id": "as-0120", "idempotency_key": "as-key-as-0120"}
+{"ts": "2026-09-07T14:56:24.126247+00:00", "event": "deploy_attempt", "asset_id": "as-0120", "idempotency_key": "as-key-as-0120", "checksum": "9z70dt"}
+{"ts": "2026-09-07T14:56:24.129784+00:00", "event": "outcome", "asset_id": "as-0096", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.130572+00:00", "event": "bind_key", "asset_id": "as-0121", "idempotency_key": "as-key-as-0121"}
+{"ts": "2026-09-07T14:56:24.130722+00:00", "event": "deploy_attempt", "asset_id": "as-0121", "idempotency_key": "as-key-as-0121", "checksum": "at2lyw"}
+{"ts": "2026-09-07T14:56:24.140690+00:00", "event": "ambiguous", "asset_id": "as-0088", "detail": "HTTP 504: ''", "bound_key": "as-key-as-0088"}
+{"ts": "2026-09-07T14:56:24.142829+00:00", "event": "outcome", "asset_id": "as-0101", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.143175+00:00", "event": "outcome", "asset_id": "as-0099", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.143072+00:00", "event": "outcome", "asset_id": "as-0094", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.143042+00:00", "event": "outcome", "asset_id": "as-0087", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.143764+00:00", "event": "bind_key", "asset_id": "as-0122", "idempotency_key": "as-key-as-0122"}
+{"ts": "2026-09-07T14:56:24.145379+00:00", "event": "deploy_attempt", "asset_id": "as-0122", "idempotency_key": "as-key-as-0122", "checksum": "2fyxtx"}
+{"ts": "2026-09-07T14:56:24.145045+00:00", "event": "bind_key", "asset_id": "as-0124", "idempotency_key": "as-key-as-0124"}
+{"ts": "2026-09-07T14:56:24.144522+00:00", "event": "bind_key", "asset_id": "as-0123", "idempotency_key": "as-key-as-0123"}
+{"ts": "2026-09-07T14:56:24.145961+00:00", "event": "deploy_attempt", "asset_id": "as-0123", "idempotency_key": "as-key-as-0123", "checksum": "3m0eb6"}
+{"ts": "2026-09-07T14:56:24.145862+00:00", "event": "deploy_attempt", "asset_id": "as-0124", "idempotency_key": "as-key-as-0124", "checksum": "d8y4qk"}
+{"ts": "2026-09-07T14:56:24.145947+00:00", "event": "outcome", "asset_id": "as-0104", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.145443+00:00", "event": "outcome", "asset_id": "as-0102", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.160875+00:00", "event": "outcome", "asset_id": "as-0103", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.163095+00:00", "event": "outcome", "asset_id": "as-0105", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.163797+00:00", "event": "outcome", "asset_id": "as-0109", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:24.164899+00:00", "event": "ambiguous", "asset_id": "as-0106", "detail": "HTTP 504: ''", "bound_key": "as-key-as-0106"}
+{"ts": "2026-09-07T14:56:24.164974+00:00", "event": "ambiguous", "asset_id": "as-0108", "detail": "HTTP 504: ''", "bound_key": "as-key-as-0108"}
+{"ts": "2026-09-07T14:56:34.246889+00:00", "event": "outcome", "asset_id": "as-0110", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.247127+00:00", "event": "outcome", "asset_id": "as-0111", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.249214+00:00", "event": "outcome", "asset_id": "as-0114", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.250739+00:00", "event": "outcome", "asset_id": "as-0107", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.250863+00:00", "event": "outcome", "asset_id": "as-0112", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.252764+00:00", "event": "outcome", "asset_id": "as-0113", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.257355+00:00", "event": "outcome", "asset_id": "as-0115", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.264568+00:00", "event": "outcome", "asset_id": "as-0121", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.265178+00:00", "event": "outcome", "asset_id": "as-0117", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.265585+00:00", "event": "outcome", "asset_id": "as-0119", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.330732+00:00", "event": "outcome", "asset_id": "as-0120", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.331290+00:00", "event": "outcome", "asset_id": "as-0116", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.335463+00:00", "event": "outcome", "asset_id": "as-0118", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.348320+00:00", "event": "ambiguous", "asset_id": "as-0124", "detail": "HTTP 504: ''", "bound_key": "as-key-as-0124"}
+{"ts": "2026-09-07T14:56:34.352605+00:00", "event": "outcome", "asset_id": "as-0122", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.362625+00:00", "event": "outcome", "asset_id": "as-0123", "status": "deployed", "reason": "201 created", "http": 201}
+{"ts": "2026-09-07T14:56:34.637333+00:00", "event": "outcome", "asset_id": "as-0088", "status": "deployed", "reason": "ambiguous (HTTP 504: ''); destination shows 1 row", "dep_rows": [{"id": "dep-96", "asset_id": "as-0088", "checksum": "f2zn4k", "at": 1788792984081}]}
+{"ts": "2026-09-07T14:56:34.650110+00:00", "event": "outcome", "asset_id": "as-0108", "status": "deployed", "reason": "ambiguous (HTTP 504: ''); destination shows 1 row", "dep_rows": [{"id": "dep-107", "asset_id": "as-0108", "checksum": "b6yfu5", "at": 1788792984129}]}
+{"ts": "2026-09-07T14:56:34.661574+00:00", "event": "outcome", "asset_id": "as-0106", "status": "deployed", "reason": "ambiguous (HTTP 504: ''); destination shows 1 row", "dep_rows": [{"id": "dep-105", "asset_id": "as-0106", "checksum": "19x407", "at": 1788792984121}]}
+{"ts": "2026-09-07T14:56:34.723213+00:00", "event": "outcome", "asset_id": "as-0124", "status": "deployed", "reason": "ambiguous (HTTP 504: ''); destination shows 1 row", "dep_rows": [{"id": "dep-121", "asset_id": "as-0124", "checksum": "d8y4qk", "at": 1788792994356}]}
