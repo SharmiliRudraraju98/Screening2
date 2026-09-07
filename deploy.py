@@ -12,7 +12,10 @@ as-0005 mess). In order:
   3. POST /s2/deploy once, with header x-cq-idempotency-key = the bound key.
        - 201            -> DEPLOYED
        - 200 replayed:true -> ALREADY_PRESENT (provider confirms no new row)
-       - 409 duplicate_write_refused -> ALREADY_PRESENT (write already landed)
+       - 409 duplicate_write_refused -> ALREADY_PRESENT (write already landed;
+         but if the destination shows 0 rows, UNCONFIRMED -- do not guess)
+       - 409 parent_not_deployed -> BLOCKED (write refused, nothing created;
+         the parent named in the body is not in the destination yet)
        - 500 / timeout / anything else ambiguous -> do NOT resend blindly.
          GET /s2/destination once (visibility is instant) and decide:
            exactly one row for this asset_id -> DEPLOYED
@@ -40,6 +43,12 @@ DEPLOYED = "deployed"
 ALREADY_PRESENT = "already_present"
 UNCONFIRMED = "unconfirmed"
 DUPLICATED = "duplicated"
+BLOCKED = "blocked"
+
+# The provider returns 409 for two unrelated reasons. Only one means the
+# write landed.
+ERR_DUPLICATE = "duplicate_write_refused"   # write already happened -> present
+ERR_PARENT = "parent_not_deployed"          # write refused, nothing created
 
 
 class NeedsHumanDecision(RuntimeError):
@@ -128,19 +137,44 @@ def deploy_asset(asset_id, checksum, *, client=None, journal=None):
                        "200 replayed:true -- provider made no new row", rows)
 
     if status_code == 409:
-        # duplicate_write_refused: the write already landed.
+        err = body.get("error") if isinstance(body, dict) else None
         rows = _destination_rows(client, asset_id)
-        if len(rows) > 1:
-            journal.record("outcome", asset_id, status=DUPLICATED,
-                           reason="409 but destination shows >1 row",
-                           dep_rows=rows)
-            return _result(asset_id, DUPLICATED,
-                           f"409 and {len(rows)} rows present", rows)
-        journal.record("outcome", asset_id, status=ALREADY_PRESENT,
-                       reason="409 duplicate_write_refused", http=409,
-                       body=body, dep_rows=rows)
-        return _result(asset_id, ALREADY_PRESENT,
-                       "409 duplicate_write_refused -- already deployed", rows)
+
+        if err == ERR_PARENT:
+            # The write was REFUSED. Nothing was created. This is not a
+            # duplicate; the parent named in the body is not deployed yet.
+            missing = body.get("depends_on") if isinstance(body, dict) else None
+            journal.record("outcome", asset_id, status=BLOCKED,
+                           reason=f"409 parent_not_deployed ({missing})",
+                           http=409, body=body, dep_rows=rows)
+            return _result(asset_id, BLOCKED,
+                           f"parent {missing} not deployed", rows)
+
+        if err == ERR_DUPLICATE:
+            # The write already landed on an earlier attempt.
+            if len(rows) > 1:
+                journal.record("outcome", asset_id, status=DUPLICATED,
+                               reason="409 duplicate but >1 row", dep_rows=rows)
+                return _result(asset_id, DUPLICATED,
+                               f"409 duplicate and {len(rows)} rows present", rows)
+            if len(rows) == 0:
+                # Provider says duplicate, destination says nothing. Do not
+                # guess -- this contradiction needs a human.
+                journal.record("outcome", asset_id, status=UNCONFIRMED,
+                               reason="409 duplicate but 0 rows in destination",
+                               dep_rows=rows)
+                return _result(asset_id, UNCONFIRMED,
+                               "409 duplicate_write_refused but no row present",
+                               rows)
+            journal.record("outcome", asset_id, status=ALREADY_PRESENT,
+                           reason="409 duplicate_write_refused", http=409,
+                           body=body, dep_rows=rows)
+            return _result(asset_id, ALREADY_PRESENT,
+                           "409 duplicate_write_refused -- already deployed", rows)
+
+        # Some other 409 we have not seen. Treat as ambiguous, do not guess.
+        return _ambiguous(asset_id, client, journal, key,
+                          f"HTTP 409 unknown error: {body!r}")
 
     # 500 / unexpected 4xx / anything else: ambiguous. Read once, decide.
     return _ambiguous(asset_id, client, journal, key,
