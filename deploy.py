@@ -55,6 +55,30 @@ class NeedsHumanDecision(RuntimeError):
     """Raised when proceeding safely is not possible without a human call."""
 
 
+def build_snapshot(client=None):
+    """One full paged read of GET /s2/destination -> {asset_id: [rows]}.
+
+    Take this ONCE before a batch. It is stale the moment we start writing;
+    deploy_asset only reads it for the up-front already-present check.
+    """
+    client = client or HttpClient()
+    snap = {}
+    cursor = None
+    while True:
+        params = {"cursor": cursor} if cursor is not None else None
+        resp = client.get(DESTINATION_PATH, params=params)
+        if resp.status_code != 200:
+            raise RuntimeError(
+                f"GET {DESTINATION_PATH} -> {resp.status_code}: {resp.text[:200]}")
+        data = resp.json()
+        for row in data.get("items", []):
+            snap.setdefault(row["asset_id"], []).append(row)
+        cursor = data.get("next_cursor")
+        if not cursor:
+            break
+    return snap
+
+
 def _destination_rows(client, asset_id):
     """All destination rows whose asset_id matches. Pages if needed."""
     rows = []
@@ -75,13 +99,28 @@ def _destination_rows(client, asset_id):
     return rows
 
 
-def deploy_asset(asset_id, checksum, *, client=None, journal=None):
-    """Run the full decision for one asset. Returns a result dict:
+def deploy_asset(asset_id, checksum, *, client=None, journal=None,
+                 snapshot=None):
+    """Deploy one asset, exactly once, deciding its status from evidence.
 
-        {"asset_id", "status", "reason", "dep_rows": [...]}
-
-    status is one of DEPLOYED / ALREADY_PRESENT / UNCONFIRMED / DUPLICATED.
+    Returns {"asset_id", "status", "reason", "dep_rows": [...]}. status is
+    one of DEPLOYED / ALREADY_PRESENT / BLOCKED / UNCONFIRMED / DUPLICATED.
     Raises NeedsHumanDecision if a safe path forward requires a human.
+
+    snapshot: a pre-fetched {asset_id: [rows]} dict from ONE full read of
+      GET /s2/destination taken before this batch started. When given, the
+      up-front "already present?" check reads this dict instead of making
+      its own GET -- that is what lets a whole level deploy at concurrency
+      25 without a burst of destination reads. If asset_id is absent from
+      the snapshot, we proceed to deploy normally.
+
+      The snapshot is NOT consulted after the deploy POST: it is stale for
+      anything we just wrote. A 5xx / timeout still triggers exactly one
+      fresh GET /s2/destination for this specific asset (the ambiguous
+      path), unchanged.
+
+    snapshot=None keeps the old behaviour: a live pre-check GET per asset.
+    That path is retained as a fallback; the orchestrator does not use it.
     """
     client = client or HttpClient()
     journal = journal or Journal()
@@ -90,18 +129,25 @@ def deploy_asset(asset_id, checksum, *, client=None, journal=None):
     key = idempotency_key_for(asset_id)
     journal.bind_key(asset_id, key)
 
-    # 2. Pre-check the destination.
-    rows = _destination_rows(client, asset_id)
+    # 2. "Already present?" -- from the snapshot if we have one, else a
+    #    live GET (fallback path).
+    if snapshot is not None:
+        rows = list(snapshot.get(asset_id, []))
+        source = "snapshot"
+    else:
+        rows = _destination_rows(client, asset_id)
+        source = "live pre-check"
+
     if len(rows) > 1:
         journal.record("outcome", asset_id, status=DUPLICATED,
-                       reason="pre-check found >1 row", dep_rows=rows)
+                       reason=f"{source} found {len(rows)} rows", dep_rows=rows)
         return _result(asset_id, DUPLICATED,
-                       f"{len(rows)} rows already in destination", rows)
+                       f"{len(rows)} rows already in destination ({source})", rows)
     if len(rows) == 1:
         journal.record("outcome", asset_id, status=ALREADY_PRESENT,
-                       reason="pre-check found existing row", dep_rows=rows)
+                       reason=f"{source} found existing row", dep_rows=rows)
         return _result(asset_id, ALREADY_PRESENT,
-                       "row already in destination before deploy", rows)
+                       f"row already in destination before deploy ({source})", rows)
 
     # 3. Deploy once, with the bound key.
     journal.record("deploy_attempt", asset_id, idempotency_key=key,
@@ -114,52 +160,51 @@ def deploy_asset(asset_id, checksum, *, client=None, journal=None):
         return _ambiguous(asset_id, client, journal, key,
                           f"transport error: {type(exc).__name__}: {exc}")
 
+    return _decide_from_response(asset_id, resp, client, journal, key)
+
+
+def _decide_from_response(asset_id, resp, client, journal, key):
+    """Classify a deploy POST response. No destination read on the clean
+    paths (201 / 200-replayed / 409); one read only on ambiguity."""
     status_code = resp.status_code
     body = _safe_json(resp)
 
     if status_code == 201:
-        rows = _destination_rows(client, asset_id)
-        if len(rows) > 1:
-            journal.record("outcome", asset_id, status=DUPLICATED,
-                           reason="201 but destination shows >1 row",
-                           dep_rows=rows)
-            return _result(asset_id, DUPLICATED,
-                           f"201 received but {len(rows)} rows present", rows)
+        # Trust the 201. The snapshot is stale and re-reading here is the
+        # per-asset GET we are trying to avoid. If a concurrent writer also
+        # created a row, the final reconcile catches it.
         journal.record("outcome", asset_id, status=DEPLOYED,
-                       reason="201 created", http=201, dep_rows=rows)
-        return _result(asset_id, DEPLOYED, "201 created", rows)
+                       reason="201 created", http=201)
+        return _result(asset_id, DEPLOYED, "201 created", [])
 
     if status_code == 200 and isinstance(body, dict) and body.get("replayed"):
-        rows = _destination_rows(client, asset_id)
         journal.record("outcome", asset_id, status=ALREADY_PRESENT,
-                       reason="200 replayed:true", http=200, dep_rows=rows)
+                       reason="200 replayed:true", http=200)
         return _result(asset_id, ALREADY_PRESENT,
-                       "200 replayed:true -- provider made no new row", rows)
+                       "200 replayed:true -- provider made no new row", [])
 
     if status_code == 409:
         err = body.get("error") if isinstance(body, dict) else None
-        rows = _destination_rows(client, asset_id)
 
         if err == ERR_PARENT:
-            # The write was REFUSED. Nothing was created. This is not a
-            # duplicate; the parent named in the body is not deployed yet.
+            # Write REFUSED, nothing created. Body names the missing parent.
             missing = body.get("depends_on") if isinstance(body, dict) else None
             journal.record("outcome", asset_id, status=BLOCKED,
                            reason=f"409 parent_not_deployed ({missing})",
-                           http=409, body=body, dep_rows=rows)
+                           http=409, body=body)
             return _result(asset_id, BLOCKED,
-                           f"parent {missing} not deployed", rows)
+                           f"parent {missing} not deployed", [])
 
         if err == ERR_DUPLICATE:
-            # The write already landed on an earlier attempt.
+            # Write already landed on an earlier attempt. Confirm with one
+            # read -- this is the one case where a 409 needs the truth.
+            rows = _destination_rows(client, asset_id)
             if len(rows) > 1:
                 journal.record("outcome", asset_id, status=DUPLICATED,
                                reason="409 duplicate but >1 row", dep_rows=rows)
                 return _result(asset_id, DUPLICATED,
                                f"409 duplicate and {len(rows)} rows present", rows)
             if len(rows) == 0:
-                # Provider says duplicate, destination says nothing. Do not
-                # guess -- this contradiction needs a human.
                 journal.record("outcome", asset_id, status=UNCONFIRMED,
                                reason="409 duplicate but 0 rows in destination",
                                dep_rows=rows)
@@ -172,11 +217,11 @@ def deploy_asset(asset_id, checksum, *, client=None, journal=None):
             return _result(asset_id, ALREADY_PRESENT,
                            "409 duplicate_write_refused -- already deployed", rows)
 
-        # Some other 409 we have not seen. Treat as ambiguous, do not guess.
+        # Some other 409 we have not seen. Ambiguous, do not guess.
         return _ambiguous(asset_id, client, journal, key,
                           f"HTTP 409 unknown error: {body!r}")
 
-    # 500 / unexpected 4xx / anything else: ambiguous. Read once, decide.
+    # 500 / 504 / unexpected 4xx / anything else: ambiguous. Read once.
     return _ambiguous(asset_id, client, journal, key,
                       f"HTTP {status_code}: {body!r}")
 
@@ -209,6 +254,16 @@ def _ambiguous(asset_id, client, journal, key, detail):
     return _result(asset_id, DUPLICATED,
                    f"ambiguous response and {len(rows)} rows in destination "
                    f"({detail})", rows)
+
+
+def deploy_asset_with_precheck(asset_id, checksum, *, client=None, journal=None):
+    """Fallback: deploy with a live per-asset pre-check GET (snapshot=None).
+
+    Kept for single-asset / debugging use. The orchestrator does NOT use
+    this -- a burst of these at concurrency 25 is what rate-limited us.
+    """
+    return deploy_asset(asset_id, checksum, client=client, journal=journal,
+                        snapshot=None)
 
 
 def redeploy(asset_id, checksum, *, client=None, journal=None):

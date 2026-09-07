@@ -166,33 +166,65 @@ class HttpClient:
                 headers=None, timeout=None):
         """Send one request, authenticated. Returns the requests.Response.
 
-        Automatic behaviour, all of it infrastructure:
+        Automatic behaviour, all of it infrastructure -- it exists so the
+        request reaches the server and is not turned away for a reason that
+        has nothing to do with whether the write is acceptable:
+
           - attach a live bearer token, refreshing proactively near expiry;
           - if the server still answers 401, refresh once and replay this
-            exact request a single time.
+            exact request a single time;
+          - if the server answers 429, read Retry-After, sleep that long,
+            replay this exact request once. A second 429 is logged and
+            returned as-is -- no unbounded loop.
 
-        No other status triggers a replay. Transport failures (timeout,
-        connection error) are logged and raised, not retried.
+        Callers (deploy.py, the orchestrator) never see a 401 or a 429;
+        they see a slow response or a genuine error. No other status
+        triggers a replay. Transport failures (timeout, connection error)
+        are logged and raised, not retried.
         """
         url = path if path.startswith("http") else f"{self.base_url}/{path.lstrip('/')}"
         eff_timeout = self.timeout if timeout is None else timeout
 
-        token = self._fresh_token()
-        resp = self._send_once(method, url, json_body=json_body, params=params,
-                               extra_headers={**(headers or {}),
-                                              "Authorization": f"Bearer {token}"},
-                               timeout=eff_timeout, note="request")
+        def send(note):
+            token = self._fresh_token()
+            return self._send_once(
+                method, url, json_body=json_body, params=params,
+                extra_headers={**(headers or {}),
+                               "Authorization": f"Bearer {token}"},
+                timeout=eff_timeout, note=note)
+
+        resp = send("request")
 
         if resp.status_code == 401:
             # Token rejected mid-run (expired early, rotated server-side).
             # Refresh and replay this one request exactly once.
-            token = self._fresh_token(force=True)
-            resp = self._send_once(method, url, json_body=json_body, params=params,
-                                   extra_headers={**(headers or {}),
-                                                  "Authorization": f"Bearer {token}"},
-                                   timeout=eff_timeout, note="request:auth-replay")
+            self._fresh_token(force=True)
+            resp = send("request:auth-replay")
+
+        if resp.status_code == 429:
+            # Rate limited. Honor Retry-After and replay exactly once.
+            delay = self._retry_after_seconds(resp)
+            time.sleep(delay)
+            resp = send("request:429-replay")
+            if resp.status_code == 429:
+                # Still limited. Do not loop. Hand it back; the caller's
+                # ambiguous path (or its own error handling) takes over.
+                self._append_note(
+                    "rate_limited_after_replay",
+                    url=url, method=method.upper(),
+                    slept=delay)
 
         return resp
+
+    @staticmethod
+    def _retry_after_seconds(resp, *, default=10, cap=30):
+        """Parse Retry-After (seconds form). Clamp to a sane range."""
+        raw = resp.headers.get("Retry-After", "")
+        try:
+            secs = int(float(raw))
+        except (TypeError, ValueError):
+            secs = default
+        return max(1, min(secs, cap))
 
     def get(self, path, **kw):
         return self.request("GET", path, **kw)
@@ -259,6 +291,15 @@ class HttpClient:
         line = json.dumps(record, ensure_ascii=False)
         with self.transcript_path.open("a", encoding="utf-8") as fh:
             fh.write(line + "\n")
+
+    def _append_note(self, note, **fields):
+        """A bare marker line in the transcript, not tied to one round trip."""
+        self._append({
+            "ts": datetime.now(timezone.utc).isoformat(),
+            "note": note,
+            **{k: _redact(v) if isinstance(v, str) else v
+               for k, v in fields.items()},
+        })
 
 
 if __name__ == "__main__":
